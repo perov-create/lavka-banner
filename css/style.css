@@ -43,8 +43,8 @@ button:hover {
 
 .shelf {
 	position: relative;
-	max-width: 400px;
-	aspect-ratio: 211 / 431;
+	width: 400px;
+	height: 1000px;
 	background-image: url('img/shelf-background.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -57,6 +57,9 @@ button:hover {
 }
 .shelf__row {
 	display: flex;
+}
+.shelf__row img {
+	align-self: flex-end;
 }
 .shelf__product {
 	cursor: grab;
@@ -133,6 +136,10 @@ button:hover {
 	.cart {
 		bottom: -100px;
 	}
+	.shelf {
+		width: 200px;
+		height: 400px;
+	}
 }
 @media (min-width: 601px) and (max-width: 1024px) {
 	.cart {
@@ -147,12 +154,13 @@ button:hover {
 		height: 38%;
 	}
 	.shelf {
-		width: 100%;
+		width: 400px;
 	}
 }
 @media (min-width: 375px) {
 	.shelf {
-		width: 80%;
+		width: 250px;
+		height: 500px;
 	}
 	.cart {
 		bottom: -140px;
@@ -160,10 +168,17 @@ button:hover {
 }
 @media (min-width: 425px) {
 	.shelf {
-		width: 70%;
+		width: 300px;
+		height: 600px;
 	}
 	.cart {
 		bottom: -160px;
+	}
+}
+@media (min-width: 500px) {
+	.shelf {
+		width: 350px;
+		height: 700px;
 	}
 }
 @media (max-width: 425px) {
@@ -185,6 +200,14 @@ button:hover {
 		height: 35%;
 	}
 	.shelf {
-		margin-bottom: 140px;
+		width: 390px;
+		height: 800px;
+	}
+}
+
+@media (min-width: 1440px) {
+	.shelf {
+		width: 500px;
+		height: 1000px;
 	}
 }
