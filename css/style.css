@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;1,500&display=swap');
+/* общие стили */
 *,
 *:before,
 *:after {
@@ -11,6 +13,7 @@ body {
 	padding: 0;
 	width: 100%;
 	font-size: 16px;
+	font-family: 'Open Sans', serif;
 }
 img {
 	display: block;
@@ -20,15 +23,19 @@ img {
 button {
 	cursor: pointer;
 	border: none;
-	background: #ff6f61;
-	color: #fff;
-	padding: 10px 20px;
-	border-radius: 5px;
-	font-size: 14px;
-	transition: background-color 0.3s;
-}
-button:hover {
-	background: #ff3b3b;
+	background: #fce000;
+	color: #000;
+	padding: 0 18px;
+	min-height: 56px;
+	display: inline-flex;
+	font-size: 16px;
+	line-height: 17px;
+	min-width: 190px;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	border-radius: 16px;
+	font-family: 'Open Sans', serif;
 }
 
 /* banner */
@@ -38,31 +45,40 @@ button:hover {
 	justify-content: space-between;
 	align-items: flex-start;
 	padding: 20px;
-	position: relative;
 }
 
+/* shelf */
 .shelf {
 	position: relative;
 	width: 400px;
 	height: 1000px;
-	background-image: url('img/shelf-background.svg');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
+	background: url('img/shelf-background.svg') center / contain no-repeat;
 	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	padding: 10px 0;
+	display: grid;
+	grid-template-rows: repeat(3, 240px);
+	padding: 20px;
 }
 .shelf__row {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	justify-items: center;
+	align-items: end;
 }
-.shelf__row img {
-	align-self: flex-end;
+.shelf__row:nth-child(2) {
+	grid-template-columns: repeat(3, 1fr);
 }
 .shelf__product {
 	cursor: grab;
+	max-width: 110px;
+	height: auto;
+	transition: transform 0.2s, opacity 0.2s;
+}
+.shelf__product:hover {
+	transform: scale(1.1);
+}
+.shelf__product.dragging {
+	opacity: 0.5;
+	transform: scale(1.2);
 	transition: transform 0.2s, opacity 0.2s;
 }
 
@@ -80,16 +96,15 @@ button:hover {
 	justify-content: center;
 	align-items: flex-end;
 	z-index: 10;
+	pointer-events: none;
 }
-
 .cart__image {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-	z-index: 1;
+	z-index: 5;
 }
-
 .cart__products {
 	position: absolute;
 	width: 60%;
@@ -102,30 +117,66 @@ button:hover {
 	z-index: 2;
 	top: 20%;
 	right: 10%;
+	pointer-events: auto;
 }
-
+.cart__products img {
+	z-index: 0;
+	width: 30%;
+	pointer-events: none;
+}
+.cart__products img:hover {
+	opacity: 1;
+	transform: translateY(0);
+}
+/* checkout btn */
 .checkout-btn {
-	position: absolute;
-	bottom: 10px;
+	position: fixed;
+	bottom: 20px;
 	left: 50%;
 	transform: translateX(-50%);
-	display: none;
+	z-index: 15;
+	display: inline-flex;
+	background-color: #fce000;
+	opacity: 0;
+	transition: opacity 0.4s ease-in-out;
 }
 .checkout-btn.visible {
-	display: block;
+	opacity: 1;
 }
 
-.shelf__product:hover {
-	transform: scale(1.1);
+/* анимации */
+@keyframes blinking {
+	0% {
+		background-color: #fce000;
+	}
+	50% {
+		background-color: #fcc100;
+	}
+	100% {
+		background-color: #fce000;
+	}
+}
+.checkout-btn.blinking {
+	animation: blinking 1s infinite;
+}
+.cart__products img {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.cart__products img.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
+/* медиа запросы */
 @media (max-width: 600px) {
 	.cart {
 		width: 90%;
 		min-width: 250px;
 	}
 	.cart__products {
-		top: 14%;
+		top: 16%;
 		right: 11%;
 		width: 65%;
 		height: 40%;
@@ -139,8 +190,52 @@ button:hover {
 	.shelf {
 		width: 200px;
 		height: 400px;
+		padding: 0 8px;
+		grid-template-rows: repeat(3, 100px);
+		grid-template-rows: 115px 91px 86px;
+	}
+	.shelf__row {
+		gap: 0px;
+	}
+	.shelf__product.wine {
+		width: 33px;
+	}
+	.shelf__product.milk {
+		width: 33px;
+	}
+	.shelf__product.jam {
+		width: 43px;
+	}
+	.shelf__product.cheese {
+		width: 34px;
+	}
+	.shelf__product.meat {
+		width: 49px;
+	}
+	.shelf__product.chicken {
+		width: 54px;
+	}
+	.shelf__row img.chicken {
+		position: relative;
+		top: 7px;
+	}
+	.shelf__product.chips {
+		width: 76px;
+	}
+	.shelf__product.pineapple {
+		width: 35px;
+	}
+	.shelf__product.banana {
+		width: 47px;
+	}
+	.shelf__product.apple {
+		width: 31px;
+	}
+	.shelf__product.green-onion {
+		width: 62px;
 	}
 }
+
 @media (min-width: 601px) and (max-width: 1024px) {
 	.cart {
 		width: 85%;
@@ -157,30 +252,153 @@ button:hover {
 		width: 400px;
 	}
 }
+
 @media (min-width: 375px) {
 	.shelf {
 		width: 250px;
 		height: 500px;
+		grid-template-rows: 143px 112px 111px;
 	}
 	.cart {
 		bottom: -140px;
 	}
+	.shelf__product.wine {
+		width: 38px;
+	}
+	.shelf__product.milk {
+		width: 38px;
+	}
+	.shelf__product.jam {
+		width: 48px;
+	}
+	.shelf__product.cheese {
+		width: 39px;
+	}
+	.shelf__product.meat {
+		width: 54px;
+	}
+	.shelf__product.chicken {
+		width: 59px;
+	}
+	.shelf__product.chips {
+		width: 81px;
+	}
+	.shelf__product.pineapple {
+		width: 40px;
+	}
+	.shelf__product.banana {
+		width: 52px;
+	}
+	.shelf__product.apple {
+		width: 36px;
+	}
+	.shelf__product.green-onion {
+		width: 67px;
+	}
+	.checkout-btn {
+		min-width: 230px;
+		font-size: 18px;
+	}
 }
+
 @media (min-width: 425px) {
 	.shelf {
 		width: 300px;
 		height: 600px;
+		grid-template-rows: 172px 138px 130px;
 	}
 	.cart {
 		bottom: -160px;
 	}
+	.shelf__product.wine {
+		width: 49px;
+	}
+	.shelf__product.milk {
+		width: 49px;
+	}
+	.shelf__product.jam {
+		width: 59px;
+	}
+	.shelf__product.cheese {
+		width: 50px;
+	}
+	.shelf__product.meat {
+		width: 65px;
+	}
+	.shelf__product.chicken {
+		width: 70px;
+	}
+	.shelf__product.chips {
+		width: 92px;
+	}
+	.shelf__product.pineapple {
+		width: 51px;
+	}
+	.shelf__product.banana {
+		width: 63px;
+	}
+	.shelf__product.apple {
+		width: 47px;
+	}
+	.shelf__product.green-onion {
+		width: 78px;
+	}
+	.checkout-btn {
+		min-width: 250px;
+		font-size: 20px;
+		min-height: 65px;
+	}
 }
+
 @media (min-width: 500px) {
 	.shelf {
 		width: 350px;
 		height: 700px;
+		grid-template-rows: 200px 161px 153px;
+	}
+	.cart {
+		bottom: -160px;
+	}
+	.shelf__product.wine {
+		width: 54px;
+	}
+	.shelf__product.milk {
+		width: 54px;
+	}
+	.shelf__product.jam {
+		width: 64px;
+	}
+	.shelf__product.cheese {
+		width: 55px;
+	}
+	.shelf__product.meat {
+		width: 70px;
+	}
+	.shelf__product.chicken {
+		width: 75px;
+	}
+	.shelf__product.chips {
+		width: 97px;
+	}
+	.shelf__product.pineapple {
+		width: 56px;
+	}
+	.shelf__product.banana {
+		width: 68px;
+	}
+	.shelf__product.apple {
+		width: 52px;
+	}
+	.shelf__product.green-onion {
+		width: 83px;
+	}
+	.checkout-btn {
+		min-width: 300px;
+		font-size: 25px;
+		min-height: 75px;
 	}
 }
+
 @media (max-width: 425px) {
 	.banner {
 		padding: 28px 44px;
@@ -194,7 +412,7 @@ button:hover {
 		bottom: -300px;
 	}
 	.cart__products {
-		top: 19%;
+		top: 20%;
 		right: 11%;
 		width: 65%;
 		height: 35%;
@@ -202,6 +420,45 @@ button:hover {
 	.shelf {
 		width: 390px;
 		height: 800px;
+		grid-template-rows: 228px 186px 171px;
+	}
+	.shelf__product.wine {
+		width: 64px;
+	}
+	.shelf__product.milk {
+		width: 64px;
+	}
+	.shelf__product.jam {
+		width: 74px;
+	}
+	.shelf__product.cheese {
+		width: 65px;
+	}
+	.shelf__product.meat {
+		width: 80px;
+	}
+	.shelf__product.chicken {
+		width: 85px;
+	}
+	.shelf__product.chips {
+		width: 107px;
+	}
+	.shelf__product.pineapple {
+		width: 66px;
+	}
+	.shelf__product.banana {
+		width: 78px;
+	}
+	.shelf__product.apple {
+		width: 62px;
+	}
+	.shelf__product.green-onion {
+		width: 93px;
+	}
+	.checkout-btn {
+		min-width: 330px;
+		font-size: 28px;
+		min-height: 85px;
 	}
 }
 
@@ -209,5 +466,49 @@ button:hover {
 	.shelf {
 		width: 500px;
 		height: 1000px;
+		grid-template-rows: 287px 230px 215px;
 	}
+	.shelf__product.wine {
+		width: 80px;
+	}
+	.shelf__product.milk {
+		width: 80px;
+	}
+	.shelf__product.jam {
+		width: 90px;
+	}
+	.shelf__product.cheese {
+		width: 81px;
+	}
+	.shelf__product.meat {
+		width: 96px;
+	}
+	.shelf__product.chicken {
+		width: 101px;
+	}
+	.shelf__product.chips {
+		width: 143px;
+	}
+	.shelf__product.pineapple {
+		width: 82px;
+	}
+	.shelf__product.banana {
+		width: 94px;
+	}
+	.shelf__product.apple {
+		width: 78px;
+	}
+	.shelf__product.green-onion {
+		width: 109px;
+	}
+	.checkout-btn {
+		min-width: 450px;
+		font-size: 32px;
+		min-height: 95px;
+	}
+}
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+	pointer-events: none;
 }
