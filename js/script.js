@@ -53,7 +53,6 @@ function touchStart(event) {
 //обработка перемещения (сенсор)
 function touchMove(event) {
 	event.preventDefault()
-
 	const touch = event.touches[0]
 	const target = document.elementFromPoint(touch.clientX, touch.clientY)
 	if (target && target.id === 'cart-products') {

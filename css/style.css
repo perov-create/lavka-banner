@@ -239,7 +239,7 @@ button {
 @media (min-width: 601px) and (max-width: 1024px) {
 	.cart {
 		width: 85%;
-		max-width: 500px;
+		max-width: 600px;
 		bottom: -150px;
 	}
 	.cart__products {
@@ -255,45 +255,45 @@ button {
 
 @media (min-width: 375px) {
 	.shelf {
-		width: 250px;
-		height: 500px;
-		grid-template-rows: 143px 112px 111px;
+		width: 270px;
+		height: 530px;
+		grid-template-rows: 152px 122px 117px;
 	}
 	.cart {
 		bottom: -140px;
 	}
 	.shelf__product.wine {
-		width: 38px;
+		width: 45px;
 	}
 	.shelf__product.milk {
-		width: 38px;
+		width: 45px;
 	}
 	.shelf__product.jam {
-		width: 48px;
+		width: 55px;
 	}
 	.shelf__product.cheese {
-		width: 39px;
+		width: 46px;
 	}
 	.shelf__product.meat {
-		width: 54px;
+		width: 61px;
 	}
 	.shelf__product.chicken {
-		width: 59px;
+		width: 66px;
 	}
 	.shelf__product.chips {
-		width: 81px;
+		width: 88px;
 	}
 	.shelf__product.pineapple {
-		width: 40px;
+		width: 47px;
 	}
 	.shelf__product.banana {
-		width: 52px;
+		width: 59px;
 	}
 	.shelf__product.apple {
-		width: 36px;
+		width: 43px;
 	}
 	.shelf__product.green-onion {
-		width: 67px;
+		width: 74px;
 	}
 	.checkout-btn {
 		min-width: 230px;
@@ -308,41 +308,9 @@ button {
 		grid-template-rows: 172px 138px 130px;
 	}
 	.cart {
-		bottom: -160px;
+		bottom: -250px;
 	}
-	.shelf__product.wine {
-		width: 49px;
-	}
-	.shelf__product.milk {
-		width: 49px;
-	}
-	.shelf__product.jam {
-		width: 59px;
-	}
-	.shelf__product.cheese {
-		width: 50px;
-	}
-	.shelf__product.meat {
-		width: 65px;
-	}
-	.shelf__product.chicken {
-		width: 70px;
-	}
-	.shelf__product.chips {
-		width: 92px;
-	}
-	.shelf__product.pineapple {
-		width: 51px;
-	}
-	.shelf__product.banana {
-		width: 63px;
-	}
-	.shelf__product.apple {
-		width: 47px;
-	}
-	.shelf__product.green-onion {
-		width: 78px;
-	}
+
 	.checkout-btn {
 		min-width: 250px;
 		font-size: 20px;
@@ -352,75 +320,9 @@ button {
 
 @media (min-width: 500px) {
 	.shelf {
-		width: 350px;
-		height: 700px;
-		grid-template-rows: 200px 161px 153px;
-	}
-	.cart {
-		bottom: -160px;
-	}
-	.shelf__product.wine {
-		width: 54px;
-	}
-	.shelf__product.milk {
-		width: 54px;
-	}
-	.shelf__product.jam {
-		width: 64px;
-	}
-	.shelf__product.cheese {
-		width: 55px;
-	}
-	.shelf__product.meat {
-		width: 70px;
-	}
-	.shelf__product.chicken {
-		width: 75px;
-	}
-	.shelf__product.chips {
-		width: 97px;
-	}
-	.shelf__product.pineapple {
-		width: 56px;
-	}
-	.shelf__product.banana {
-		width: 68px;
-	}
-	.shelf__product.apple {
-		width: 52px;
-	}
-	.shelf__product.green-onion {
-		width: 83px;
-	}
-	.checkout-btn {
-		min-width: 300px;
-		font-size: 25px;
-		min-height: 75px;
-	}
-}
-
-@media (max-width: 425px) {
-	.banner {
-		padding: 28px 44px;
-	}
-}
-
-@media (min-width: 1025px) {
-	.cart {
-		width: 70%;
-		max-width: 700px;
-		bottom: -300px;
-	}
-	.cart__products {
-		top: 20%;
-		right: 11%;
-		width: 65%;
-		height: 35%;
-	}
-	.shelf {
-		width: 390px;
-		height: 800px;
-		grid-template-rows: 228px 186px 171px;
+		width: 380px;
+		height: 780px;
+		grid-template-rows: 226px 176px 170px;
 	}
 	.shelf__product.wine {
 		width: 64px;
@@ -456,6 +358,32 @@ button {
 		width: 93px;
 	}
 	.checkout-btn {
+		min-width: 300px;
+		font-size: 25px;
+		min-height: 75px;
+	}
+}
+
+@media (max-width: 425px) {
+	.banner {
+		padding: 28px 44px;
+	}
+}
+
+@media (min-width: 1025px) {
+	.cart {
+		width: 70%;
+		max-width: 640px;
+		bottom: -300px;
+	}
+	.cart__products {
+		top: 20%;
+		right: 11%;
+		width: 65%;
+		height: 35%;
+	}
+
+	.checkout-btn {
 		min-width: 330px;
 		font-size: 28px;
 		min-height: 85px;
@@ -464,47 +392,53 @@ button {
 
 @media (min-width: 1440px) {
 	.shelf {
-		width: 500px;
-		height: 1000px;
-		grid-template-rows: 287px 230px 215px;
+		width: 430px;
+		height: 870px;
+		grid-template-rows: 250px 197px 190px;
 	}
 	.shelf__product.wine {
-		width: 80px;
+		width: 70px;
 	}
 	.shelf__product.milk {
-		width: 80px;
+		width: 70px;
 	}
 	.shelf__product.jam {
-		width: 90px;
+		width: 80px;
 	}
 	.shelf__product.cheese {
-		width: 81px;
+		width: 71px;
 	}
 	.shelf__product.meat {
-		width: 96px;
+		width: 86px;
 	}
 	.shelf__product.chicken {
-		width: 101px;
+		width: 91px;
 	}
 	.shelf__product.chips {
-		width: 143px;
+		width: 133px;
 	}
 	.shelf__product.pineapple {
-		width: 82px;
+		width: 72px;
 	}
 	.shelf__product.banana {
-		width: 94px;
+		width: 84px;
 	}
 	.shelf__product.apple {
-		width: 78px;
+		width: 68px;
 	}
 	.shelf__product.green-onion {
-		width: 109px;
+		width: 99px;
 	}
 	.checkout-btn {
 		min-width: 450px;
 		font-size: 32px;
 		min-height: 95px;
+	}
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+	.cart {
+		max-width: 430px;
+		bottom: -200px;
 	}
 }
 .hidden {
